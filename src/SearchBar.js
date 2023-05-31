@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Dimensions } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 
 export default function SearchBar({ fetchWeatherData }) {
   const [cityName, setCityName] = useState('');
@@ -11,8 +10,14 @@ export default function SearchBar({ fetchWeatherData }) {
         placeholder="Enter City name"
         value={cityName}
         onChangeText={(text) => setCityName(text)}
+        style={styles.textInput}
       />
-      <Icon name="search" size={28} color="black" onPress={() => fetchWeatherData(cityName)} />
+      <TouchableOpacity
+        style={styles.searchButton}
+        onPress={() => fetchWeatherData(cityName)}
+      >
+        <Text style={styles.searchButtonText}>Search</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -31,5 +36,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'lightgray',
     borderColor: 'lightgray',
+  },
+  textInput: {
+    flex: 1,
+    fontSize: 16,
+  },
+  searchButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 25,
+    backgroundColor: 'gray',
+  },
+  searchButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
