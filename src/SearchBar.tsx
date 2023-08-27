@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 
-export default function SearchBar({ fetchWeatherData }) {
-  const [cityName, setCityName] = useState('');
+interface SearchBarProps {
+  fetchWeatherData: (cityName: string) => void;
+}
+
+export default function SearchBar({ fetchWeatherData }: SearchBarProps) {
+  const [cityName, setCityName] = useState<string>('');
 
   return (
     <View style={styles.searchBar}>
