@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import Weather from './src/Weather';
 import SearchBar from './src/SearchBar';
 
-const API_KEY = "46a9246bebba16d42b36aac3fc3ba8af";
+const API_KEY = "207747207310538a4e209c54ba715d68";
 
 interface WeatherData {
 }
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
     },
     primaryText: {
         margin: 20,

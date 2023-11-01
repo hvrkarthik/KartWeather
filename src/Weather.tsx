@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Dimensions, StatusBar } from 'react-native';
 import SearchBar from './SearchBar';
-import { haze, rainy, snow, sunny } from '../assets/backgroundImages/index';
+import { haze, rainy, snow, sunny } from '../src/assets/backgroundImages/index';
 
 interface WeatherProps {
     weatherData: {
