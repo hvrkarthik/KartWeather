@@ -31,7 +31,7 @@ export default function Weather({ weatherData, fetchWeatherData }: WeatherProps)
         return haze;
     }
 
-    let textColor = backgroundImage !== sunny ? 'white' : 'black';
+    let textColor = backgroundImage !== sunny ? 'black' : 'black';
 
     return (
         <View style={styles.container}>
