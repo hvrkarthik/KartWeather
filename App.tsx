@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
-import SearchBar from './src/SearchBar';
-import Weather from './src/Weather';
+import SearchBar from './src/screens/SearchBar';
+import Weather from './src/screens/Weather';
 
 const API_KEY = '207747207310538a4e209c54ba715d68';
 
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
   primaryText: {
     margin: 20,

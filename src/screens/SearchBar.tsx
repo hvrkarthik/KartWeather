@@ -35,11 +35,10 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width - 20,
     borderWidth: 1.5,
     paddingVertical: 10,
-    borderRadius: 25,
     marginHorizontal: 10,
     paddingHorizontal: 10,
-    backgroundColor: 'lightgray',
-    borderColor: 'lightgray',
+    backgroundColor: '00bfff',
+    borderColor: '00bfff',
   },
   textInput: {
     flex: 1,
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
   searchButton: {
     paddingVertical: 8,
     paddingHorizontal: 12,
-    borderRadius: 25,
     backgroundColor: 'gray',
   },
   searchButtonText: {
