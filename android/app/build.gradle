@@ -98,8 +98,8 @@ android {
         applicationId "com.skysense"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
-        versionName "1.7"
+        versionCode 8
+        versionName "1.8"
     }
     signingConfigs {
         release {

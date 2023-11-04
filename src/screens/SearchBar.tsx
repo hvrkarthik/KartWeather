@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
+import React, {useState} from 'react';
+import {
+  Dimensions,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 
 interface SearchBarProps {
   fetchWeatherData: (cityName: string) => void;
 }
 
-export default function SearchBar({ fetchWeatherData }: SearchBarProps) {
+export default function SearchBar({fetchWeatherData}: SearchBarProps) {
   const [cityName, setCityName] = useState<string>('');
 
   return (
-    <View style={styles.searchBar}>
+    <KeyboardAvoidingView style={styles.searchBar} behavior="padding">
       <TextInput
         placeholder="Enter City name"
         value={cityName}
-        onChangeText={(text) => setCityName(text)}
+        onChangeText={text => setCityName(text)}
         style={styles.textInput}
       />
       <TouchableOpacity
         style={styles.searchButton}
-        onPress={() => fetchWeatherData(cityName)}
-      >
+        onPress={() => fetchWeatherData(cityName)}>
         <Text style={styles.searchButtonText}>Search</Text>
       </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
   searchButton: {
     paddingVertical: 8,
     paddingHorizontal: 12,
-    backgroundColor: 'gray',
+    backgroundColor: 'rgba(0,0,0, 0.7)',
   },
   searchButtonText: {
     color: 'white',
