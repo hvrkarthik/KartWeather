@@ -27,21 +27,21 @@ interface WeatherProps {
   fetchWeatherData: () => void;
 }
 
-export default function Weather({weatherData, fetchWeatherData}: WeatherProps) {
+const Weather: React.FC<WeatherProps> = ({weatherData, fetchWeatherData}) => {
   const [backgroundImage, setBackgroundImage] = useState<any>(null);
 
   const {weather, name, main, wind} = weatherData;
-  const [{main: currentWeather}] = weather;
+  const [{main: weatherMain}] = weather;
 
   useEffect(() => {
-    setBackgroundImage(getBackgroundImg(currentWeather));
+    setBackgroundImage(getBackgroundImg(weatherMain));
   }, [weatherData]);
 
-  function getBackgroundImg(currentWeather: string) {
-    if (currentWeather === 'Snow') return snow;
-    if (currentWeather === 'Clear') return sunny;
-    if (currentWeather === 'Rain') return rainy;
-    if (currentWeather === 'Haze') return haze;
+  function getBackgroundImg(weather: string) {
+    if (weather === 'Snow') return snow;
+    if (weather === 'Clear') return sunny;
+    if (weather === 'Rain') return rainy;
+    if (weather === 'Haze') return haze;
     return haze;
   }
 
@@ -54,6 +54,7 @@ export default function Weather({weatherData, fetchWeatherData}: WeatherProps) {
         source={backgroundImage}
         style={styles.backgroundImg}
         resizeMode="cover">
+          
         <View style={{alignItems: 'center'}}>
           <Text
             style={{
@@ -70,7 +71,7 @@ export default function Weather({weatherData, fetchWeatherData}: WeatherProps) {
               color: textColor,
               fontWeight: 'bold',
             }}>
-            Haze
+            {weatherMain}
           </Text>
           <Text style={{...styles.headerText, color: textColor}}>
             {main.temp} °C
@@ -90,13 +91,14 @@ export default function Weather({weatherData, fetchWeatherData}: WeatherProps) {
             <Text style={{fontSize: 22, color: 'white'}}>{wind.speed} m/s</Text>
           </View>
         </View>
+
         <View style={{alignSelf: 'center'}}>
           <SearchBar fetchWeatherData={fetchWeatherData} />
         </View>
       </ImageBackground>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -126,3 +128,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Weather;
