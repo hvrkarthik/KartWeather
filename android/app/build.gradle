@@ -95,11 +95,11 @@ android {
 
     namespace "com.weather_app"
     defaultConfig {
-        applicationId "com.skysense"
+        applicationId "com.kartweather"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
-        versionName "1.9"
+        versionCode 1
+        versionName "1.1"
     }
     signingConfigs {
         release {
