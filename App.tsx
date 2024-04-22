@@ -1,13 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, StyleSheet, Text, View, StatusBar, Dimensions } from 'react-native';
 import SearchBar from './src/screens/SearchBar';
 import Weather from './src/screens/Weather';
 
 const API_KEY = '207747207310538a4e209c54ba715d68';
 
-interface WeatherData {}
+interface WeatherData {
+  weather: {
+    main: string;
+  }[];
+  name: string;
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
+}
 
-export default function App() {
+const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loaded, setLoaded] = useState<boolean>(true);
 
@@ -41,6 +53,7 @@ export default function App() {
   } else if (weatherData === null) {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor="darkgray" />
         <SearchBar fetchWeatherData={fetchWeatherData} />
         <Text style={styles.primaryText}>
           City Not Found! Try Different City
@@ -51,6 +64,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="#000000" barStyle="light-content" />
       <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData} />
     </View>
   );
@@ -59,12 +73,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff0f5',
     alignItems: 'center',
     justifyContent: 'center',
   },
   primaryText: {
-    margin: 20,
+    marginVertical: 20,
     fontSize: 28,
+    textAlign: 'center',
   },
 });
+
+export default App;

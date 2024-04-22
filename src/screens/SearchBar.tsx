@@ -1,18 +1,11 @@
-import React, {useState} from 'react';
-import {
-  Dimensions,
-  KeyboardAvoidingView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 
 interface SearchBarProps {
   fetchWeatherData: (cityName: string) => void;
 }
 
-export default function SearchBar({fetchWeatherData}: SearchBarProps) {
+const SearchBar: React.FC<SearchBarProps> = ({ fetchWeatherData }) => {
   const [cityName, setCityName] = useState<string>('');
 
   return (
@@ -22,15 +15,17 @@ export default function SearchBar({fetchWeatherData}: SearchBarProps) {
         value={cityName}
         onChangeText={text => setCityName(text)}
         style={styles.textInput}
+        placeholderTextColor="#666"
       />
       <TouchableOpacity
         style={styles.searchButton}
-        onPress={() => fetchWeatherData(cityName)}>
+        onPress={() => fetchWeatherData(cityName)}
+      >
         <Text style={styles.searchButtonText}>Search</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   searchBar: {
@@ -38,22 +33,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: Dimensions.get('screen').width - 20,
-    borderWidth: 1.5,
-    paddingVertical: 10,
-    marginHorizontal: 10,
-    paddingHorizontal: 10,
-    backgroundColor: '00bfff',
-    borderColor: '00bfff',
+    width: Dimensions.get('screen').width - 40,
+    borderWidth: 1,
+    marginHorizontal: 20,
+    backgroundColor: '#f0fff0',
+    borderColor: '#000000',
+    borderRadius: 10,
+    height: 70,
   },
   textInput: {
     flex: 1,
     fontSize: 16,
+    color: '#333',
+    paddingHorizontal: 10,
   },
   searchButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    backgroundColor: 'rgba(0,0,0, 0.7)',
+    height: '80%',
+    width: '30%',
+    marginHorizontal: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    borderRadius: 10,
   },
   searchButtonText: {
     color: 'white',
@@ -61,3 +62,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default SearchBar;
