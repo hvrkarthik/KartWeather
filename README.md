@@ -1,7 +1,3 @@
-## KartWeather
-
-KartWeather is a weather application for Android devices. Stay updated with accurate weather forecasts on your smartphone.
-
 ## Installation
 
 You can download KartWeather directly from the Google Play Store and install it on Android smartphone/Tablet.
